@@ -2,8 +2,11 @@ function Hero() {
   return (
     <div className="hero">
       <h1>This isn't our computer. It's yours.</h1>
-      <p>A laptop you can customize, upgrade and repair yourself.</p>
-      <button>Configure now</button>
+      <p>
+        Updated for 2025 with AMD's latest Ryzen AI 300 Series processors,
+        with up to 12 CPU cores.
+      </p>
+      <button className="btn">Configure now</button>
     </div>
   );
 }
