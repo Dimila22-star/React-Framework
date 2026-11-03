@@ -3,7 +3,7 @@ import Hero from "./components/Hero";
 import FeatureCard from "./components/FeatureCard";
 import BuyButton from "./components/BuyButton";
 import Footer from "./components/Footer";
-import "./App.css";
+
 
 import customizeImg from "./assets/customize.png";
 import upgradeImg from "./assets/upgrade.png";
