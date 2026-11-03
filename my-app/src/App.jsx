@@ -5,9 +5,9 @@ import BuyButton from "./components/BuyButton";
 import Footer from "./components/Footer";
 import "./App.css";
 
-import customizeImg from "./assets/Picture 2.png";
-import upgradeImg from "./assets/Picture 3.png";
-import repairImg from "./assets/Picture 4.png";
+import customizeImg from "./assets/customize.png";
+import upgradeImg from "./assets/upgrade.png";
+import repairImg from "./assets/repair.png";
 
 function App() {
   const cards = [
