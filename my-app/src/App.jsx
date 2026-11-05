@@ -6,6 +6,7 @@ import BuyButton from "./components/BuyButton";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import Cart from "./components/Cart";
+import AddProductForm from "./components/AddProductForm";
 
 import laptop12IntelImg from "./assets/laptop-12-intel.webp";
 import laptop12DiyImg from "./assets/framework-laptop-12-diy.jpg";
@@ -20,8 +21,7 @@ import laptop12MainboardImg from "./assets/framework-laptop-12-mainboard.jpg";
 import laptop12Img from "./assets/framework-laptop-12.webp";
 import ultraSeries3Img from "./assets/framework-ultra-series-3.webp";
 
-
-const cards = [
+const initialCards = [
   { id: 1, title: "Laptop 12 (Intel)", text: "Compact and colorful, built to be repaired.", image: laptop12IntelImg, price: 699, category: "Framework Laptop" },
   { id: 2, title: "Laptop 12 DIY Edition", text: "Assemble it yourself in minutes.", image: laptop12DiyImg, price: 549, category: "Framework Laptop" },
   { id: 3, title: "Laptop 13 Pro", text: "Premium build with a sharp display.", image: laptop13ProImg, price: 1399, category: "Framework Laptop" },
@@ -35,7 +35,6 @@ const cards = [
   { id: 11, title: "Framework Laptop 12", text: "Built to be repaired.", image: laptop12Img, price: 699, category: "Framework Laptop" },
   { id: 12, title: "Laptop 13 (Intel Core Ultra Series 3)", text: "Latest Intel processor.", image: ultraSeries3Img, price: 1599, category: "Framework Laptop" },
 ];
-
 
 const categories = [
   "Framework Laptop",
@@ -52,6 +51,7 @@ const categories = [
 ];
 
 function App() {
+  const [cards, setCards] = useState(initialCards);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [cart, setCart] = useState([]);
@@ -83,16 +83,21 @@ function App() {
     setCart((prev) => prev.filter((i) => i.id !== id));
   }
 
+  function handleAddProduct(newProduct) {
+    setCards((prev) => [
+      { ...newProduct, id: Date.now(), image: laptop12IntelImg },
+      ...prev,
+    ]);
+  }
+
   return (
     <div>
       <Navbar />
       <Hero />
 
       <div className="shop">
+        
         <Sidebar
-          search={search}
-          setSearch={setSearch}
-          resultCount={visible.length}
           categories={categories}
           counts={counts}
           total={cards.length}
@@ -100,12 +105,28 @@ function App() {
           setActiveCategory={setActiveCategory}
         />
 
-        <div>
-
+        
+        <div className="main-content">
           <h1 className="shop-title">
-  {activeCategory === "All" ? "All products" : activeCategory}
-  <small> / {visible.length} items</small>
-</h1>
+            {activeCategory === "All" ? "All products" : activeCategory}
+            <small> / {visible.length} items</small>
+          </h1>
+
+         
+          <div className="search-bar-wrapper">
+            <input
+              type="text"
+              className="content-search-input"
+              placeholder="Search products..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            {search && (
+              <button className="clear-search-btn" onClick={() => setSearch("")}>
+                &times;
+              </button>
+            )}
+          </div>
 
           <div className="cards">
             {visible.map((card) => (
@@ -123,7 +144,11 @@ function App() {
           <BuyButton />
         </div>
 
-        <Cart items={cart} onRemove={removeFromCart} />
+        
+        <div className="right-panel">
+          <AddProductForm onAddProduct={handleAddProduct} categories={categories} />
+          <Cart items={cart} onRemove={removeFromCart} />
+        </div>
       </div>
 
       <Footer />
