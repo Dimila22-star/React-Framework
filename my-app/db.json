@@ -1,0 +1,97 @@
+{
+    "initialCards": [
+        { 
+            "id": 1,
+            "title": "Laptop 12 (Intel)",
+            "text": "Compact and colorful, built to be repaired.",
+            "image": "./assets/laptop-12-intel.webp",
+            "price": 699,
+            "category": "Framework Laptop"
+        },
+        { 
+            "id": 2,
+            "title": "Laptop 12 DIY Edition",
+            "text": "Assemble it yourself in minutes.",
+            "image": "./assets/framework-laptop-12-diy.jpg",
+            "price": 549,
+            "category": "Framework Laptop"
+        },
+        { 
+            "id": 3,
+            "title": "Laptop 13 Pro",
+            "text": "Premium build with a sharp display.",
+            "image": "./assets/framework-laptop-13-pro.webp",
+            "price": 1399,
+            "category": "Framework Laptop"
+        },
+        { 
+            "id": 4,
+            "title": "Laptop 13 Pro (AMD Ryzen AI 300)",
+            "text": "Powerful AMD processor.",
+            "image": "./assets/amd-ryzen-al-3000.webp",
+            "price": 2299,
+            "category": "Framework Laptop" },
+        { 
+            "id": 5,
+            "title": "Laptop 16",
+            "text": "Our biggest screen.",
+            "image": "./assets/framework-laptop-16.png",
+            "price": 1839,
+            "category": "Framework Laptop" },
+        { 
+            "id": 6,
+            "title": "Laptop 16 DIY Edition",
+            "text": "Bring your own memory and storage.",
+            "image": "./assets/framework-laptop-16-diy.jpg",
+            "price": 1249,
+            "category": "Framework Laptop"
+        },
+        { 
+            "id": 7,
+            "title": "Laptop 12 (13th Gen)",
+            "text": "Ready to use out of the box.",
+            "image": "./assets/framework-laptop-1213th-gen.png",
+            "price": 699,
+            "category": "Framework Laptop"
+        },
+        {
+            "id": 8,
+            "title": "Laptop 16 DIY (AMD Ryzen)",
+            "text": "DIY with an AMD processor.",
+            "image": "./assets/framework-laptop-16-diy-amd-ryzen.jpg",
+            "price": 1299,
+            "category": "Framework Laptop"
+        },
+        {
+            "id": 9,
+            "title": "Refurbished Laptop 13",
+            "text": "Tested and ready at a lower price.",
+            "image": "./assets/refurbished-framework-laptop-13.webp",
+            "price": 729,
+            "category": "Framework Laptop" },
+        { 
+            "id": 10,
+            "title": "Laptop 12 Mainboard",
+            "text": "Upgrade the brain of your laptop.",
+            "image": "./assets/framework-laptop-12-mainboard.jpg",
+            "price": 399,
+            "category": "Mainboards"
+        },
+        { 
+            "id": 11,
+            "title": "Framework Laptop 12",
+            "text": "Built to be repaired.",
+            "image": "./assets/framework-laptop-12.webp",
+            "price": 699,
+            "category": "Framework Laptop"
+        },
+        { 
+            "id": 12,
+            "title": "Laptop 13 (Intel Core Ultra Series 3)",
+            "text": "Latest Intel processor.",
+            "image": "./assets/framework-ultra-series-3.webp",
+            "price": 1599,
+            "category": "Framework Laptop"
+        }
+    ]
+}
