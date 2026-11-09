@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; // CHANGED: added useEffect
+import { useState, useEffect } from "react"; 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import FeatureCard from "./components/FeatureCard";
@@ -8,8 +8,6 @@ import Sidebar from "./components/Sidebar";
 import Cart from "./components/Cart";
 import AddProductForm from "./components/AddProductForm";
 
-// CHANGED: only this one image import is kept, because handleAddProduct still uses it.
-// The other 11 image imports were removed because the images now come from db.json.
 import laptop12IntelImg from "./assets/laptop-12-intel.webp";
 
 const categories = [
@@ -27,7 +25,7 @@ const categories = [
 ];
 
 function App() {
-  const [cards, setCards] = useState([]); // CHANGED: starts empty instead of initialCards
+  const [cards, setCards] = useState([]); 
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [cart, setCart] = useState([]);
