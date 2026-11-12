@@ -333,6 +333,60 @@ button:hover {
   font-weight: bold;
 }
 
+.marketplace {
+  padding: 30px;
+}
+
+.marketplace h1 {
+  margin-bottom: 25px;
+}
+
+.marketplace form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.marketplace input {
+  padding: 10px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product-grid .card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.product-grid .card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+
+.product-grid button {
+  margin: 5px;
+  padding: 9px 12px;
+  cursor: pointer;
+}
+
+.product-grid button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 700px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 footer {
   background-color: #222;
