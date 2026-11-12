@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import FeatureCard from "./components/FeatureCard";
@@ -25,32 +25,38 @@ const categories = [
 ];
 
 function App() {
-  const [cards, setCards] = useState([]); 
+  const [cards, setCards] = useState([]);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [cart, setCart] = useState([]);
 
-//for products
+  const safeCards = Array.isArray(cards) ? cards : [];
+
   useEffect(() => {
-    fetch("db.json")
+    fetch("/db.json")
       .then((res) => res.json())
-      .then((data) => setCards(data));
+      .then((data) => {
+        const list = Array.isArray(data)
+          ? data
+          : Object.values(data).filter(Array.isArray).flat();
+        setCards(list);
+      })
+      .catch((err) => console.error("Failed to load products:", err));
   }, []);
 
-  // for cards
   useEffect(() => {
-    document.title = "Framework Shop (" + cards.length + " products)";
-  }, [cards]);
+    document.title = "Framework Shop (" + safeCards.length + " products)";
+  }, [safeCards.length]);
 
   const counts = {};
-  cards.forEach((c) => {
+  safeCards.forEach((c) => {
     counts[c.category] = (counts[c.category] || 0) + 1;
   });
 
-  const visible = cards.filter(
+  const visible = safeCards.filter(
     (c) =>
       (activeCategory === "All" || c.category === activeCategory) &&
-      c.title.toLowerCase().includes(search.toLowerCase())
+      (c.title || "").toLowerCase().includes(search.toLowerCase())
   );
 
   function addToCart(card) {
@@ -71,8 +77,12 @@ function App() {
 
   function handleAddProduct(newProduct) {
     setCards((prev) => [
-      { ...newProduct, id: Date.now(), image: laptop12IntelImg },
-      ...prev,
+      {
+        ...newProduct,
+        id: Date.now(),
+        image: laptop12IntelImg,
+      },
+      ...(Array.isArray(prev) ? prev : []),
     ]);
   }
 
@@ -82,22 +92,19 @@ function App() {
       <Hero />
 
       <div className="shop">
-
         <Sidebar
           categories={categories}
           counts={counts}
-          total={cards.length}
+          total={safeCards.length}
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
         />
-
 
         <div className="main-content">
           <h1 className="shop-title">
             {activeCategory === "All" ? "All products" : activeCategory}
             <small> / {visible.length} items</small>
           </h1>
-
 
           <div className="search-bar-wrapper">
             <input
@@ -129,7 +136,6 @@ function App() {
 
           <BuyButton />
         </div>
-
 
         <div className="right-panel">
           <AddProductForm onAddProduct={handleAddProduct} categories={categories} />
